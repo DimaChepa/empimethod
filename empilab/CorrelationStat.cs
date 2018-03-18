@@ -148,9 +148,9 @@ namespace empilab
             return Math.Round(high / low, 4);
         }
 
-        public bool GetSignificanceForSpirmanCoef(double value)
+        public bool GetSignificanceForSpirmanCoef(double value, double quantile)
         {
-            return value > laplasCoef;
+            return value > quantile;
         }
 
         public double GetCandelaStat(double value)
@@ -186,7 +186,22 @@ namespace empilab
             return Math.Round((u + g1 / count + g2 / Math.Pow(count, 2) + g3 / Math.Pow(count, 3) + g4 / Math.Pow(count, 4)), 4);
         }
 
-        private double BuildNormalQuantile(double probability)
+        public double GetQuantileFisher(double probability, int count1, int count2)
+        {
+            var u = BuildNormalQuantile(probability);
+            var sigma = 1 / (double)count1 + 1 / (double)count2;
+            var beta = 1 / (double)count1 - 1 / (double)count2;
+            var z = u * Math.Sqrt(sigma / 2) - beta * (u * u + 2) / 6
+                + Math.Sqrt(sigma / 2) * (sigma * (u * u + 3 * u) / 24 + beta * beta * (Math.Pow(u, 3) + 11 * u) / (72 * sigma))
+                - sigma * beta * (Math.Pow(u, 4) + 9 * Math.Pow(u, 2) + 8) / 120
+                + Math.Pow(beta, 3) * (3 * Math.Pow(u, 4) + 7 * Math.Pow(u, 2) - 16) / (3240 * sigma)
+                + Math.Sqrt(sigma / 2) * ((Math.Pow(sigma, 2) / 1920 * (Math.Pow(u, 5) + 20 * Math.Pow(u, 3) + 15 * u)
+                + Math.Pow(beta, 4) / 2880 * (Math.Pow(u, 5) + 44 * Math.Pow(u, 3) + 183 * u)
+                + Math.Pow(beta, 4) / (155520 * sigma * sigma) * (9 * Math.Pow(u, 5) - 284 * Math.Pow(u, 3) - 1513 * u)));
+            return Math.Round(Math.Pow(Math.E, 2 * z), 4);
+        }
+
+        public double BuildNormalQuantile(double probability)
         {
             if (probability <= 0.5)
             {
@@ -196,6 +211,18 @@ namespace empilab
             {
                 return BuildNormalQuantileEquation(1 - probability);
             }
+        }
+
+        public double GetLowLimitForPairCorrelation(double pairCorrelation, double normalQuantile)
+        {
+            return pairCorrelation + pairCorrelation * (1 - Math.Pow(pairCorrelation, 2)) / (2 * listModels.Count()) -
+                normalQuantile * ((1 - Math.Pow(pairCorrelation, 2)) / (Math.Sqrt(listModels.Count() - 1)));
+        }
+
+        public double GetHighLimitForPairCorrelation(double pairCorrelation, double normalQuantile)
+        {
+            return Math.Round(pairCorrelation + pairCorrelation * (1 - Math.Pow(pairCorrelation, 2)) / (2 * listModels.Count()) +
+                normalQuantile * ((1 - Math.Pow(pairCorrelation, 2)) / (Math.Sqrt(listModels.Count() - 1))), 4);
         }
 
         private double BuildNormalQuantileEquation(double probability)

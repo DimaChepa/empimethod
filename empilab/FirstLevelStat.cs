@@ -160,12 +160,12 @@ namespace empilab
 
         public double GetLowLimit(double parameter, double mark)
         {
-            return parameter - mark * laplasCoef;
+            return Math.Round(parameter - mark * laplasCoef, 4);
         }
 
         public double GetHighLimit(double parameter, double mark)
         {
-            return parameter + mark * laplasCoef;
+            return Math.Round(parameter + mark * laplasCoef, 4);
         }
     }
 }

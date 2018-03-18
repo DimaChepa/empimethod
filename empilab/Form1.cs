@@ -88,6 +88,7 @@ namespace empilab
         private void FillTextBoxesCorrelation()
         {
             var alpha = 0.1;
+            var normalQuantile = Math.Round(correlationStat.BuildNormalQuantile(1 - alpha / 2), 4);
             // pair correlation
             var pairCorrelation = correlationStat.GetCoefPairCorrelation(firstLevelStat.GetAverage().Key, firstLevelStat.GetAverage().Value);
             var pairCorrelationStat = correlationStat.GetStatisticForPairCorrelation(pairCorrelation);
@@ -97,23 +98,29 @@ namespace empilab
             txtPairCorrelationStat.Text = pairCorrelationStat.ToString();
             txtPairCorrelationQuantile.Text = pairCorrelationQuantile.ToString();
             txtSignificance.Text = pairCorrelationSignificance.ToString();
+            txtLowLimitPairCorrelation.Text = correlationStat.GetLowLimitForPairCorrelation(pairCorrelation, correlationStat.BuildNormalQuantile(1 - alpha / 2)).ToString();
+            txtHighLimitPairCorrelation.Text = correlationStat.GetHighLimitForPairCorrelation(pairCorrelation, correlationStat.BuildNormalQuantile(1 - alpha / 2)).ToString();
 
             // correlation ratio
             var correlationRatio = correlationStat.GetCorrelationRelation();
             var correlationRatioStat = correlationStat.GetStatisticCorrelationRatio(correlationRatio);
+            var quantileFisher = correlationStat.GetQuantileFisher(1 - alpha, 60 - 2, correlationStat.listModels.Count() - 60);
             txtCorrelationRatio.Text =  correlationRatio.ToString();
             txtCorrelationRatioStat.Text = correlationRatioStat.ToString();
+            txtCorrelationRatioQuantile.Text = quantileFisher.ToString();
             txtCorrelationRatioSign.Text = correlationStat.GetSignificanceForCorrelationRatio(correlationRatioStat).ToString();
 
             // spirman coef
             txtSpiramnCoef.Text = correlationStat.GetSpirmanCoef().ToString();
             txtSpirmanStat.Text = correlationStat.GetSpirmanStat(correlationStat.GetSpirmanCoef()).ToString();
-            txtSpirmanSign.Text = correlationStat.GetSignificanceForSpirmanCoef(correlationStat.GetSpirmanStat(correlationStat.GetSpirmanCoef())).ToString();
+            txtSpirmanCoefQuantile.Text = pairCorrelationQuantile.ToString();
+            txtSpirmanSign.Text = correlationStat.GetSignificanceForSpirmanCoef(correlationStat.GetSpirmanStat(correlationStat.GetSpirmanCoef()),pairCorrelationQuantile).ToString();
 
             // kandela coef
             txtKandelaCoef.Text = correlationStat.GetKandelaCoef().ToString();
             txtCandelaStat.Text = correlationStat.GetCandelaStat(correlationStat.GetKandelaCoef()).ToString();
             txtCandelaSign.Text = correlationStat.GetSignificanceForCandelaCoef(correlationStat.GetCandelaStat(correlationStat.GetKandelaCoef())).ToString();
+            txtCandelaCoefQuantile.Text = normalQuantile.ToString();
         }
 
         private void BuildCorrelationChart()

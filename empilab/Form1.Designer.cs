@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnDownloadFile = new System.Windows.Forms.Button();
             this.txtAverageMarkX = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -79,6 +79,14 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.txtCandelaCoefQuantile = new System.Windows.Forms.TextBox();
+            this.txtSpirmanCoefQuantile = new System.Windows.Forms.TextBox();
+            this.txtCandelaSign = new System.Windows.Forms.TextBox();
+            this.txtCandelaStat = new System.Windows.Forms.TextBox();
+            this.txtSpirmanSign = new System.Windows.Forms.TextBox();
+            this.txtSpirmanStat = new System.Windows.Forms.TextBox();
+            this.txtCorrelationRatioSign = new System.Windows.Forms.TextBox();
+            this.txtCorrelationRatioStat = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.txtKandelaCoef = new System.Windows.Forms.TextBox();
             this.txtSpiramnCoef = new System.Windows.Forms.TextBox();
@@ -91,21 +99,14 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtHighLimitPairCorrelation = new System.Windows.Forms.TextBox();
             this.txtPairCorrelationStat = new System.Windows.Forms.TextBox();
             this.txtPairCorrelationQuantile = new System.Windows.Forms.TextBox();
             this.txtSignificance = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtLowLimitPairCorrelation = new System.Windows.Forms.TextBox();
             this.txtPairCorrelationValue = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtCorrelationRatioStat = new System.Windows.Forms.TextBox();
-            this.txtCorrelationRatioSign = new System.Windows.Forms.TextBox();
-            this.txtSpirmanStat = new System.Windows.Forms.TextBox();
-            this.txtSpirmanSign = new System.Windows.Forms.TextBox();
-            this.txtCandelaStat = new System.Windows.Forms.TextBox();
-            this.txtCandelaSign = new System.Windows.Forms.TextBox();
-            this.txtSpirmanCoefQuantile = new System.Windows.Forms.TextBox();
-            this.txtCandelaCoefQuantile = new System.Windows.Forms.TextBox();
+            this.txtCorrelationRatioQuantile = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -529,23 +530,24 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(21, 21);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(734, 543);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.txtCorrelationRatioQuantile);
             this.tabPage3.Controls.Add(this.txtCandelaCoefQuantile);
             this.tabPage3.Controls.Add(this.txtSpirmanCoefQuantile);
             this.tabPage3.Controls.Add(this.txtCandelaSign);
@@ -566,11 +568,11 @@
             this.tabPage3.Controls.Add(this.label14);
             this.tabPage3.Controls.Add(this.label13);
             this.tabPage3.Controls.Add(this.label12);
-            this.tabPage3.Controls.Add(this.textBox6);
+            this.tabPage3.Controls.Add(this.txtHighLimitPairCorrelation);
             this.tabPage3.Controls.Add(this.txtPairCorrelationStat);
             this.tabPage3.Controls.Add(this.txtPairCorrelationQuantile);
             this.tabPage3.Controls.Add(this.txtSignificance);
-            this.tabPage3.Controls.Add(this.textBox2);
+            this.tabPage3.Controls.Add(this.txtLowLimitPairCorrelation);
             this.tabPage3.Controls.Add(this.txtPairCorrelationValue);
             this.tabPage3.Controls.Add(this.label6);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -579,6 +581,62 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Correlation coefs";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // txtCandelaCoefQuantile
+            // 
+            this.txtCandelaCoefQuantile.Location = new System.Drawing.Point(468, 255);
+            this.txtCandelaCoefQuantile.Name = "txtCandelaCoefQuantile";
+            this.txtCandelaCoefQuantile.Size = new System.Drawing.Size(100, 20);
+            this.txtCandelaCoefQuantile.TabIndex = 26;
+            // 
+            // txtSpirmanCoefQuantile
+            // 
+            this.txtSpirmanCoefQuantile.Location = new System.Drawing.Point(468, 190);
+            this.txtSpirmanCoefQuantile.Name = "txtSpirmanCoefQuantile";
+            this.txtSpirmanCoefQuantile.Size = new System.Drawing.Size(100, 20);
+            this.txtSpirmanCoefQuantile.TabIndex = 25;
+            // 
+            // txtCandelaSign
+            // 
+            this.txtCandelaSign.Location = new System.Drawing.Point(611, 255);
+            this.txtCandelaSign.Name = "txtCandelaSign";
+            this.txtCandelaSign.Size = new System.Drawing.Size(100, 20);
+            this.txtCandelaSign.TabIndex = 24;
+            // 
+            // txtCandelaStat
+            // 
+            this.txtCandelaStat.Location = new System.Drawing.Point(329, 255);
+            this.txtCandelaStat.Name = "txtCandelaStat";
+            this.txtCandelaStat.Size = new System.Drawing.Size(100, 20);
+            this.txtCandelaStat.TabIndex = 23;
+            // 
+            // txtSpirmanSign
+            // 
+            this.txtSpirmanSign.Location = new System.Drawing.Point(611, 190);
+            this.txtSpirmanSign.Name = "txtSpirmanSign";
+            this.txtSpirmanSign.Size = new System.Drawing.Size(100, 20);
+            this.txtSpirmanSign.TabIndex = 22;
+            // 
+            // txtSpirmanStat
+            // 
+            this.txtSpirmanStat.Location = new System.Drawing.Point(329, 190);
+            this.txtSpirmanStat.Name = "txtSpirmanStat";
+            this.txtSpirmanStat.Size = new System.Drawing.Size(100, 20);
+            this.txtSpirmanStat.TabIndex = 21;
+            // 
+            // txtCorrelationRatioSign
+            // 
+            this.txtCorrelationRatioSign.Location = new System.Drawing.Point(611, 118);
+            this.txtCorrelationRatioSign.Name = "txtCorrelationRatioSign";
+            this.txtCorrelationRatioSign.Size = new System.Drawing.Size(100, 20);
+            this.txtCorrelationRatioSign.TabIndex = 20;
+            // 
+            // txtCorrelationRatioStat
+            // 
+            this.txtCorrelationRatioStat.Location = new System.Drawing.Point(329, 123);
+            this.txtCorrelationRatioStat.Name = "txtCorrelationRatioStat";
+            this.txtCorrelationRatioStat.Size = new System.Drawing.Size(100, 20);
+            this.txtCorrelationRatioStat.TabIndex = 19;
             // 
             // label20
             // 
@@ -633,9 +691,9 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(938, 38);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(41, 13);
+            this.label17.Size = new System.Drawing.Size(49, 13);
             this.label17.TabIndex = 12;
-            this.label17.Text = "label17";
+            this.label17.Text = "High limit";
             // 
             // label16
             // 
@@ -660,9 +718,9 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(786, 38);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(41, 13);
+            this.label14.Size = new System.Drawing.Size(47, 13);
             this.label14.TabIndex = 9;
-            this.label14.Text = "label14";
+            this.label14.Text = "Low limit";
             // 
             // label13
             // 
@@ -682,12 +740,12 @@
             this.label12.TabIndex = 7;
             this.label12.Text = "Value";
             // 
-            // textBox6
+            // txtHighLimitPairCorrelation
             // 
-            this.textBox6.Location = new System.Drawing.Point(912, 56);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 6;
+            this.txtHighLimitPairCorrelation.Location = new System.Drawing.Point(912, 56);
+            this.txtHighLimitPairCorrelation.Name = "txtHighLimitPairCorrelation";
+            this.txtHighLimitPairCorrelation.Size = new System.Drawing.Size(100, 20);
+            this.txtHighLimitPairCorrelation.TabIndex = 6;
             // 
             // txtPairCorrelationStat
             // 
@@ -710,12 +768,12 @@
             this.txtSignificance.Size = new System.Drawing.Size(100, 20);
             this.txtSignificance.TabIndex = 3;
             // 
-            // textBox2
+            // txtLowLimitPairCorrelation
             // 
-            this.textBox2.Location = new System.Drawing.Point(756, 59);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 2;
+            this.txtLowLimitPairCorrelation.Location = new System.Drawing.Point(756, 59);
+            this.txtLowLimitPairCorrelation.Name = "txtLowLimitPairCorrelation";
+            this.txtLowLimitPairCorrelation.Size = new System.Drawing.Size(100, 20);
+            this.txtLowLimitPairCorrelation.TabIndex = 2;
             // 
             // txtPairCorrelationValue
             // 
@@ -733,61 +791,12 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "coefficient of pair correlation";
             // 
-            // txtCorrelationRatioStat
+            // txtCorrelationRatioQuantile
             // 
-            this.txtCorrelationRatioStat.Location = new System.Drawing.Point(329, 123);
-            this.txtCorrelationRatioStat.Name = "txtCorrelationRatioStat";
-            this.txtCorrelationRatioStat.Size = new System.Drawing.Size(100, 20);
-            this.txtCorrelationRatioStat.TabIndex = 19;
-            // 
-            // txtCorrelationRatioSign
-            // 
-            this.txtCorrelationRatioSign.Location = new System.Drawing.Point(611, 118);
-            this.txtCorrelationRatioSign.Name = "txtCorrelationRatioSign";
-            this.txtCorrelationRatioSign.Size = new System.Drawing.Size(100, 20);
-            this.txtCorrelationRatioSign.TabIndex = 20;
-            // 
-            // txtSpirmanStat
-            // 
-            this.txtSpirmanStat.Location = new System.Drawing.Point(329, 190);
-            this.txtSpirmanStat.Name = "txtSpirmanStat";
-            this.txtSpirmanStat.Size = new System.Drawing.Size(100, 20);
-            this.txtSpirmanStat.TabIndex = 21;
-            // 
-            // txtSpirmanSign
-            // 
-            this.txtSpirmanSign.Location = new System.Drawing.Point(611, 190);
-            this.txtSpirmanSign.Name = "txtSpirmanSign";
-            this.txtSpirmanSign.Size = new System.Drawing.Size(100, 20);
-            this.txtSpirmanSign.TabIndex = 22;
-            // 
-            // txtCandelaStat
-            // 
-            this.txtCandelaStat.Location = new System.Drawing.Point(329, 255);
-            this.txtCandelaStat.Name = "txtCandelaStat";
-            this.txtCandelaStat.Size = new System.Drawing.Size(100, 20);
-            this.txtCandelaStat.TabIndex = 23;
-            // 
-            // txtCandelaSign
-            // 
-            this.txtCandelaSign.Location = new System.Drawing.Point(611, 255);
-            this.txtCandelaSign.Name = "txtCandelaSign";
-            this.txtCandelaSign.Size = new System.Drawing.Size(100, 20);
-            this.txtCandelaSign.TabIndex = 24;
-            // 
-            // txtSpirmanCoefQuantile
-            // 
-            this.txtSpirmanCoefQuantile.Location = new System.Drawing.Point(468, 190);
-            this.txtSpirmanCoefQuantile.Name = "txtSpirmanCoefQuantile";
-            this.txtSpirmanCoefQuantile.Size = new System.Drawing.Size(100, 20);
-            this.txtSpirmanCoefQuantile.TabIndex = 25;
-            // 
-            // txtCandelaCoefQuantile
-            // 
-            this.txtCandelaCoefQuantile.Location = new System.Drawing.Point(468, 255);
-            this.txtCandelaCoefQuantile.Name = "txtCandelaCoefQuantile";
-            this.txtCandelaCoefQuantile.Size = new System.Drawing.Size(100, 20);
-            this.txtCandelaCoefQuantile.TabIndex = 26;
+            this.txtCorrelationRatioQuantile.Location = new System.Drawing.Point(468, 123);
+            this.txtCorrelationRatioQuantile.Name = "txtCorrelationRatioQuantile";
+            this.txtCorrelationRatioQuantile.Size = new System.Drawing.Size(100, 20);
+            this.txtCorrelationRatioQuantile.TabIndex = 27;
             // 
             // Form1
             // 
@@ -841,11 +850,11 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtHighLimitPairCorrelation;
         private System.Windows.Forms.TextBox txtPairCorrelationStat;
         private System.Windows.Forms.TextBox txtPairCorrelationQuantile;
         private System.Windows.Forms.TextBox txtSignificance;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtLowLimitPairCorrelation;
         private System.Windows.Forms.TextBox txtPairCorrelationValue;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtCorrelationRatio;
@@ -886,6 +895,7 @@
         private System.Windows.Forms.TextBox txtSpirmanStat;
         private System.Windows.Forms.TextBox txtCandelaCoefQuantile;
         private System.Windows.Forms.TextBox txtSpirmanCoefQuantile;
+        private System.Windows.Forms.TextBox txtCorrelationRatioQuantile;
     }
 }
 
