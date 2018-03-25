@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnDownloadFile = new System.Windows.Forms.Button();
             this.txtAverageMarkX = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -79,6 +79,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.txtCorrelationRatioQuantile = new System.Windows.Forms.TextBox();
             this.txtCandelaCoefQuantile = new System.Windows.Forms.TextBox();
             this.txtSpirmanCoefQuantile = new System.Windows.Forms.TextBox();
             this.txtCandelaSign = new System.Windows.Forms.TextBox();
@@ -106,12 +107,37 @@
             this.txtLowLimitPairCorrelation = new System.Windows.Forms.TextBox();
             this.txtPairCorrelationValue = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtCorrelationRatioQuantile = new System.Windows.Forms.TextBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.txtLinearQuantileB = new System.Windows.Forms.TextBox();
+            this.txtLinearQuantileA = new System.Windows.Forms.TextBox();
+            this.linearStatisticB = new System.Windows.Forms.TextBox();
+            this.linearStatisticA = new System.Windows.Forms.TextBox();
+            this.txtLinearDispersionB = new System.Windows.Forms.TextBox();
+            this.txtLinearDispersionA = new System.Windows.Forms.TextBox();
+            this.txtLinearValueB = new System.Windows.Forms.TextBox();
+            this.txtLinearValueA = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtLinearSignificanceA = new System.Windows.Forms.TextBox();
+            this.txtLinearSignificanceB = new System.Windows.Forms.TextBox();
+            this.txtLinearLowLimitA = new System.Windows.Forms.TextBox();
+            this.txtLinearHighLimitB = new System.Windows.Forms.TextBox();
+            this.txtLinearLowLimitB = new System.Windows.Forms.TextBox();
+            this.txtLinearHighLimitA = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnDownloadFile
@@ -275,6 +301,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -530,17 +557,17 @@
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(21, 21);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(734, 543);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -581,6 +608,13 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Correlation coefs";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // txtCorrelationRatioQuantile
+            // 
+            this.txtCorrelationRatioQuantile.Location = new System.Drawing.Point(468, 123);
+            this.txtCorrelationRatioQuantile.Name = "txtCorrelationRatioQuantile";
+            this.txtCorrelationRatioQuantile.Size = new System.Drawing.Size(100, 20);
+            this.txtCorrelationRatioQuantile.TabIndex = 27;
             // 
             // txtCandelaCoefQuantile
             // 
@@ -791,12 +825,226 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "coefficient of pair correlation";
             // 
-            // txtCorrelationRatioQuantile
+            // tabPage4
             // 
-            this.txtCorrelationRatioQuantile.Location = new System.Drawing.Point(468, 123);
-            this.txtCorrelationRatioQuantile.Name = "txtCorrelationRatioQuantile";
-            this.txtCorrelationRatioQuantile.Size = new System.Drawing.Size(100, 20);
-            this.txtCorrelationRatioQuantile.TabIndex = 27;
+            this.tabPage4.Controls.Add(this.txtLinearHighLimitA);
+            this.tabPage4.Controls.Add(this.txtLinearLowLimitB);
+            this.tabPage4.Controls.Add(this.txtLinearHighLimitB);
+            this.tabPage4.Controls.Add(this.txtLinearLowLimitA);
+            this.tabPage4.Controls.Add(this.txtLinearSignificanceB);
+            this.tabPage4.Controls.Add(this.txtLinearSignificanceA);
+            this.tabPage4.Controls.Add(this.txtLinearQuantileB);
+            this.tabPage4.Controls.Add(this.txtLinearQuantileA);
+            this.tabPage4.Controls.Add(this.linearStatisticB);
+            this.tabPage4.Controls.Add(this.linearStatisticA);
+            this.tabPage4.Controls.Add(this.txtLinearDispersionB);
+            this.tabPage4.Controls.Add(this.txtLinearDispersionA);
+            this.tabPage4.Controls.Add(this.txtLinearValueB);
+            this.tabPage4.Controls.Add(this.txtLinearValueA);
+            this.tabPage4.Controls.Add(this.label38);
+            this.tabPage4.Controls.Add(this.label37);
+            this.tabPage4.Controls.Add(this.label36);
+            this.tabPage4.Controls.Add(this.label35);
+            this.tabPage4.Controls.Add(this.label34);
+            this.tabPage4.Controls.Add(this.label33);
+            this.tabPage4.Controls.Add(this.label32);
+            this.tabPage4.Controls.Add(this.label23);
+            this.tabPage4.Controls.Add(this.label22);
+            this.tabPage4.Controls.Add(this.label21);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(1056, 570);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Regression statistic";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // txtLinearQuantileB
+            // 
+            this.txtLinearQuantileB.Location = new System.Drawing.Point(510, 195);
+            this.txtLinearQuantileB.Name = "txtLinearQuantileB";
+            this.txtLinearQuantileB.Size = new System.Drawing.Size(100, 20);
+            this.txtLinearQuantileB.TabIndex = 17;
+            // 
+            // txtLinearQuantileA
+            // 
+            this.txtLinearQuantileA.Location = new System.Drawing.Point(510, 136);
+            this.txtLinearQuantileA.Name = "txtLinearQuantileA";
+            this.txtLinearQuantileA.Size = new System.Drawing.Size(100, 20);
+            this.txtLinearQuantileA.TabIndex = 16;
+            // 
+            // linearStatisticB
+            // 
+            this.linearStatisticB.Location = new System.Drawing.Point(378, 195);
+            this.linearStatisticB.Name = "linearStatisticB";
+            this.linearStatisticB.Size = new System.Drawing.Size(100, 20);
+            this.linearStatisticB.TabIndex = 15;
+            // 
+            // linearStatisticA
+            // 
+            this.linearStatisticA.Location = new System.Drawing.Point(378, 136);
+            this.linearStatisticA.Name = "linearStatisticA";
+            this.linearStatisticA.Size = new System.Drawing.Size(100, 20);
+            this.linearStatisticA.TabIndex = 14;
+            // 
+            // txtLinearDispersionB
+            // 
+            this.txtLinearDispersionB.Location = new System.Drawing.Point(248, 195);
+            this.txtLinearDispersionB.Name = "txtLinearDispersionB";
+            this.txtLinearDispersionB.Size = new System.Drawing.Size(100, 20);
+            this.txtLinearDispersionB.TabIndex = 13;
+            // 
+            // txtLinearDispersionA
+            // 
+            this.txtLinearDispersionA.Location = new System.Drawing.Point(248, 136);
+            this.txtLinearDispersionA.Name = "txtLinearDispersionA";
+            this.txtLinearDispersionA.Size = new System.Drawing.Size(100, 20);
+            this.txtLinearDispersionA.TabIndex = 12;
+            // 
+            // txtLinearValueB
+            // 
+            this.txtLinearValueB.Location = new System.Drawing.Point(70, 195);
+            this.txtLinearValueB.Name = "txtLinearValueB";
+            this.txtLinearValueB.Size = new System.Drawing.Size(100, 20);
+            this.txtLinearValueB.TabIndex = 11;
+            // 
+            // txtLinearValueA
+            // 
+            this.txtLinearValueA.Location = new System.Drawing.Point(70, 136);
+            this.txtLinearValueA.Name = "txtLinearValueA";
+            this.txtLinearValueA.Size = new System.Drawing.Size(100, 20);
+            this.txtLinearValueA.TabIndex = 10;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(29, 202);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(13, 13);
+            this.label38.TabIndex = 9;
+            this.label38.Text = "b";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(29, 139);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(13, 13);
+            this.label37.TabIndex = 8;
+            this.label37.Text = "a";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(375, 85);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(44, 13);
+            this.label36.TabIndex = 7;
+            this.label36.Text = "Statistic";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(507, 85);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(46, 13);
+            this.label35.TabIndex = 6;
+            this.label35.Text = "Quantile";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(629, 85);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(65, 13);
+            this.label34.TabIndex = 5;
+            this.label34.Text = "Significance";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(770, 85);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(47, 13);
+            this.label33.TabIndex = 4;
+            this.label33.Text = "Low limit";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(918, 85);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(49, 13);
+            this.label32.TabIndex = 3;
+            this.label32.Text = "High limit";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(245, 85);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(56, 13);
+            this.label23.TabIndex = 2;
+            this.label23.Text = "Dispersion";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(67, 85);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(98, 13);
+            this.label22.TabIndex = 1;
+            this.label22.Text = "Value of evaluation";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(436, 19);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(87, 13);
+            this.label21.TabIndex = 0;
+            this.label21.Text = "Linear regression";
+            // 
+            // txtLinearSignificanceA
+            // 
+            this.txtLinearSignificanceA.Location = new System.Drawing.Point(632, 136);
+            this.txtLinearSignificanceA.Name = "txtLinearSignificanceA";
+            this.txtLinearSignificanceA.Size = new System.Drawing.Size(100, 20);
+            this.txtLinearSignificanceA.TabIndex = 18;
+            // 
+            // txtLinearSignificanceB
+            // 
+            this.txtLinearSignificanceB.Location = new System.Drawing.Point(632, 194);
+            this.txtLinearSignificanceB.Name = "txtLinearSignificanceB";
+            this.txtLinearSignificanceB.Size = new System.Drawing.Size(100, 20);
+            this.txtLinearSignificanceB.TabIndex = 19;
+            // 
+            // txtLinearLowLimitA
+            // 
+            this.txtLinearLowLimitA.Location = new System.Drawing.Point(773, 136);
+            this.txtLinearLowLimitA.Name = "txtLinearLowLimitA";
+            this.txtLinearLowLimitA.Size = new System.Drawing.Size(100, 20);
+            this.txtLinearLowLimitA.TabIndex = 20;
+            // 
+            // txtLinearHighLimitB
+            // 
+            this.txtLinearHighLimitB.Location = new System.Drawing.Point(921, 194);
+            this.txtLinearHighLimitB.Name = "txtLinearHighLimitB";
+            this.txtLinearHighLimitB.Size = new System.Drawing.Size(100, 20);
+            this.txtLinearHighLimitB.TabIndex = 21;
+            // 
+            // txtLinearLowLimitB
+            // 
+            this.txtLinearLowLimitB.Location = new System.Drawing.Point(773, 194);
+            this.txtLinearLowLimitB.Name = "txtLinearLowLimitB";
+            this.txtLinearLowLimitB.Size = new System.Drawing.Size(100, 20);
+            this.txtLinearLowLimitB.TabIndex = 22;
+            // 
+            // txtLinearHighLimitA
+            // 
+            this.txtLinearHighLimitA.Location = new System.Drawing.Point(921, 136);
+            this.txtLinearHighLimitA.Name = "txtLinearHighLimitA";
+            this.txtLinearHighLimitA.Size = new System.Drawing.Size(100, 20);
+            this.txtLinearHighLimitA.TabIndex = 23;
             // 
             // Form1
             // 
@@ -814,6 +1062,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -896,6 +1146,31 @@
         private System.Windows.Forms.TextBox txtCandelaCoefQuantile;
         private System.Windows.Forms.TextBox txtSpirmanCoefQuantile;
         private System.Windows.Forms.TextBox txtCorrelationRatioQuantile;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TextBox txtLinearValueB;
+        private System.Windows.Forms.TextBox txtLinearValueA;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox txtLinearDispersionB;
+        private System.Windows.Forms.TextBox txtLinearDispersionA;
+        private System.Windows.Forms.TextBox linearStatisticB;
+        private System.Windows.Forms.TextBox linearStatisticA;
+        private System.Windows.Forms.TextBox txtLinearQuantileB;
+        private System.Windows.Forms.TextBox txtLinearQuantileA;
+        private System.Windows.Forms.TextBox txtLinearSignificanceB;
+        private System.Windows.Forms.TextBox txtLinearSignificanceA;
+        private System.Windows.Forms.TextBox txtLinearHighLimitA;
+        private System.Windows.Forms.TextBox txtLinearLowLimitB;
+        private System.Windows.Forms.TextBox txtLinearHighLimitB;
+        private System.Windows.Forms.TextBox txtLinearLowLimitA;
     }
 }
 

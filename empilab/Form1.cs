@@ -11,6 +11,7 @@ namespace empilab
         private FileReader fileReader;
         private FirstLevelStat firstLevelStat;
         private CorrelationStat correlationStat;
+        private RegressionStatistic regressionStatistic;
         private IEnumerable<string> fileContent;
         private IEnumerable<Model> listCorrelationData;
         public Form1()
@@ -25,6 +26,7 @@ namespace empilab
         private void ProvideFirstLevelStatAnalytics()
         {
             listCorrelationData = dataProvider.Parse(fileContent);
+            regressionStatistic = new RegressionStatistic(listCorrelationData, correlationStat);
             firstLevelStat.Activate(listCorrelationData);
 
             FillTextBoxes();
@@ -121,6 +123,27 @@ namespace empilab
             txtCandelaStat.Text = correlationStat.GetCandelaStat(correlationStat.GetKandelaCoef()).ToString();
             txtCandelaSign.Text = correlationStat.GetSignificanceForCandelaCoef(correlationStat.GetCandelaStat(correlationStat.GetKandelaCoef())).ToString();
             txtCandelaCoefQuantile.Text = normalQuantile.ToString();
+
+            // linnear regression analyze
+            var getLinearRegressionCoefA = regressionStatistic.GetLinearRegressionCoefs(pairCorrelation).A;
+            var getLinearRegressionCoefB = regressionStatistic.GetLinearRegressionCoefs(pairCorrelation).B;
+            txtLinearValueA.Text = getLinearRegressionCoefA.ToString();
+            txtLinearValueB.Text = getLinearRegressionCoefB.ToString();
+            var linearDispersionA = regressionStatistic.GetDespersionForA(getLinearRegressionCoefA, getLinearRegressionCoefB);
+            var linearDispersionB = regressionStatistic.GetDespersionForB(getLinearRegressionCoefA, getLinearRegressionCoefB);
+            txtLinearDispersionA.Text = linearDispersionA.ToString();
+            txtLinearDispersionB.Text = linearDispersionB.ToString();
+            linearStatisticA.Text = regressionStatistic.GetStatistic(getLinearRegressionCoefA, linearDispersionA).ToString();
+            linearStatisticB.Text = regressionStatistic.GetStatistic(getLinearRegressionCoefB, linearDispersionB).ToString();
+            var quantile = regressionStatistic.GetQuantile();
+            txtLinearQuantileA.Text = quantile.ToString();
+            txtLinearQuantileB.Text = quantile.ToString();
+            txtLinearSignificanceA.Text = regressionStatistic.GetSignificance(quantile, getLinearRegressionCoefA).ToString();
+            txtLinearSignificanceB.Text = regressionStatistic.GetSignificance(quantile, getLinearRegressionCoefB).ToString();
+            txtLinearLowLimitA.Text = regressionStatistic.GetLowLimit(getLinearRegressionCoefA, quantile, linearDispersionA).ToString();
+            txtLinearHighLimitA.Text = regressionStatistic.GetHighLimit(getLinearRegressionCoefA, quantile, linearDispersionA).ToString();
+            txtLinearLowLimitB.Text = regressionStatistic.GetLowLimit(getLinearRegressionCoefB, quantile, linearDispersionB).ToString();
+            txtLinearHighLimitB.Text = regressionStatistic.GetHighLimit(getLinearRegressionCoefB, quantile, linearDispersionB).ToString();
         }
 
         private void BuildCorrelationChart()
